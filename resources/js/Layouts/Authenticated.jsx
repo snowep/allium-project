@@ -30,8 +30,14 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
 
 const drawerWidth = 240;
+
+function handleClick(event) {
+    event.preventDefault();
+    console.info("You clicked a breadcrumb.");
+}
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -169,6 +175,18 @@ export default function Authenticated({ auth, header, children }) {
                 }}
             >
                 <Toolbar />
+                <div role="presentation" onClick={handleClick}>
+                    <Breadcrumbs aria-label="breadcrumbs">
+                        <Typography
+                            underline="hover"
+                            color="text.primary"
+                            href="/dashboard"
+                            aria-current="page"
+                        >
+                            {header}
+                        </Typography>
+                    </Breadcrumbs>
+                </div>
                 <div className="min-h-screen bg-gray-100">
                     <nav className="bg-white border-b border-gray-100">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
