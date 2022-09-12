@@ -26,6 +26,8 @@
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
         "@mui/icons-material": "^5.10.3",
-        "@mui/material": "^5.10.3"
+        "@mui/material": "^5.10.3",
+        "apexcharts": "^3.35.5",
+        "react-apexcharts": "^1.4.0"
     }
 }

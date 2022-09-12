@@ -11,7 +11,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 
-export default function TopNavBar({ auth }) {
+import MenuIcon from "@mui/icons-material/Menu";
+
+const drawerWidth = 220;
+export default function TopNavBar({ auth, action }) {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -40,14 +43,26 @@ export default function TopNavBar({ auth }) {
             as: "button",
         },
     ];
-
     return (
         <AppBar
             position="fixed"
-            sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            sx={{
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+
+                ml: { sm: `${drawerWidth}px` },
+            }}
             elevation={0}
         >
             <Toolbar>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={action}
+                    sx={{ mr: 2, display: { sm: "none" } }}
+                >
+                    <MenuIcon />
+                </IconButton>
                 <Typography
                     variant="h6"
                     sx={{ flexGrow: 1 }}
@@ -61,7 +76,7 @@ export default function TopNavBar({ auth }) {
                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                             <Avatar
                                 alt={auth.user.name}
-                                src="/static/images/avatar/2.jpg"
+                                // src="/static/images/avatar/2.jpg"
                             />
                         </IconButton>
                     </Tooltip>
